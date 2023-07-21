@@ -31,6 +31,13 @@ class LeapYearValidationApplicationTests {
 	}
 
 	@Test
+	public void testNonLeapYearsAfterLeapYears() {
+		assertFalse(LeapYearValidator.isLeapYear(2017));
+		assertFalse(LeapYearValidator.isLeapYear(2021));
+		assertFalse(LeapYearValidator.isLeapYear(2022));
+	}
+
+	@Test
 	public void testInvalidYears() {
 		assertThrows(LeapYearValidationException.class, () -> LeapYearValidator.isLeapYear(0));
 		assertThrows(LeapYearValidationException.class, () -> LeapYearValidator.isLeapYear(-200));
