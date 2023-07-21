@@ -22,11 +22,18 @@ class LeapYearValidationApplicationTests {
 		assertFalse(LeapYearValidator.isLeapYear(1700));
 		assertFalse(LeapYearValidator.isLeapYear(1800));
 	}
-	
+
 	@Test
-    public void testInvalidYears() {
-        assertThrows(LeapYearValidationException.class, () -> LeapYearValidator.isLeapYear(0));
-        assertThrows(LeapYearValidationException.class, () -> LeapYearValidator.isLeapYear(-200));
-    }
+	public void testRegularLeapYears() {
+		assertTrue(LeapYearValidator.isLeapYear(2012));
+		assertTrue(LeapYearValidator.isLeapYear(2016));
+		assertTrue(LeapYearValidator.isLeapYear(2020));
+	}
+
+	@Test
+	public void testInvalidYears() {
+		assertThrows(LeapYearValidationException.class, () -> LeapYearValidator.isLeapYear(0));
+		assertThrows(LeapYearValidationException.class, () -> LeapYearValidator.isLeapYear(-200));
+	}
 
 }
