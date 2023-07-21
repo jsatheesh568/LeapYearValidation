@@ -1,9 +1,11 @@
 package com.kata.leapyear.controller;
 
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kata.leapyear.exception.LeapYearValidationException;
 import com.kata.leapyear.service.LeapYearValidator;
 
 @RestController
@@ -18,4 +20,8 @@ public class LeapYearController {
 		}
 	}
 
+	@ExceptionHandler(LeapYearValidationException.class)
+    public String handleLeapYearValidationException(LeapYearValidationException ex) {
+        return ex.getMessage();
+    }
 }
